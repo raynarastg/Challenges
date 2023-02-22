@@ -1,21 +1,14 @@
 const graph = {
-  f: ['g', 'i'],
-  g: ['h', 'k'],
-  h: [],
-  i: ['g'],
-  j: ['i'],
-  k: []
+  a: ['b'],
+  b: ['c'],
+  c: ['d'],
+  d: []
 }
 
-const hasPath = (graph, key, destination) => {
-  if (key === destination) {
-    return true
-  }
+const depthFirst = (graph, key) => {
+  console.log(key)
   for (let neighbor of graph[key]) {
-    if (hasPath(graph, neighbor, destination)) {
-     return true
-   }
+    depthFirst(graph, neighbor)
   }
-  return false
 }
-console.log(hasPath(graph, 'f', 'k'))
+console.log(depthFirst(graph, 'b'))
